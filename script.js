@@ -15,26 +15,26 @@ $(document).ready(function(){
     var total = $("#total");
     total.text("0");
 
-    $("#numbers a").not("#clear,#clearAll").click(function(){
+    $("#numbers a").not("#clear,#clearAll").on("click", function(){
         number += $(this).text();
         total.text(number);
         numLength(number);
     });
-    $("#operators a").not("#equals").click(function(){
+    $("#operators a").not("#equals").on("click", function(){
         operator = $(this).text();
         newNumber = number;
         number = "";
         total.text("0");
     });
-    $("#clear, #clearAll").click(function(){
+    $("#clear, #clearAll").on("click", function(){
         number = "";
         total.text("0");
         if ($(this).attr("id") === "clearAll"){
             newNumber = "";
         }
     });
-    //Add your last .click() here!
-    $("#equals").click(function(){
+
+    $("#equals").on("click", function(){
         if (operator === "+"){
             number = (parseInt(number, 10) + parseInt(newNumber,10)).toString(10);
         } else if (operator === "-"){
